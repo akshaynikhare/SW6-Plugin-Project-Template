@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/master/src/Core/System/SystemConfig/Schema/config.xsd">
+
+    <card>
+        <title lang="en-US">Debug</title>
+        <title lang="de-DE">Debug</title>
+        <input-field type="bool">
+            <name>DebugPost</name>
+            <label>Enable Debuging</label>
+            <label lang="de-DE">Enable Debuging</label>
+            <helpText>Enable Debuging</helpText>
+            <helpText lang="de-DE">Enable Debuging</helpText>
+            <disabled>False</disabled>
+        </input-field>
+        <input-field type="text">
+            <name>DebugPostURL</name>
+            <label>Debug Post URL</label>
+            <placeholder>Please enter URL to send post request to debug.</placeholder>
+            <helpText>Please enter URL to send post request to debug.</helpText>
+            <defaultValue></defaultValue>
+        </input-field>
+    </card>
+
+
+</config>
