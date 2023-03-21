@@ -1,0 +1,49 @@
+version: "3"
+
+services:
+
+    shopware:
+      # use either tag "latest" or any other version like "6.1.5", ...
+      image: dockware/dev:latest
+
+      container_name: slox_test_1
+      ports:
+         - "80:80"
+         - "8080:8080"
+         - "3306:3306"
+         - "22:22"
+         - "8888:8888"
+         - "9999:9999"
+         - "9998:9998"
+      volumes:
+         - "db_volume:/var/lib/mysql"
+         - "shop_volume:/var/www/html"
+         - ./slox_example_plugin:/var/www/html/custom/plugins/slox_example_plugin
+         - ./pimpMyLog/logLinker.json:/var/www/pimpmylog/config.user.d/logLinker.json
+         - ./slox_example_plugin/bin/buildadmin.sh:/var/www/html/bin/buildadmin.sh
+         
+      networks:
+         - web
+      environment:
+         # default = 0, recommended to be OFF for frontend devs
+         - XDEBUG_ENABLED=1
+         # default = latest PHP, optional = specific version
+         - PHP_VERSION=8.0
+
+volumes:
+  db_volume:
+    driver: local
+  shop_volume:
+    driver: local
+
+networks:
+  web:
+    external: false
+
+
+    #Docker Clean up
+    # docker image prune -a
+    # docker system prune
+    # docker container prune
+    # docker volume prune
+    # docker network prune
