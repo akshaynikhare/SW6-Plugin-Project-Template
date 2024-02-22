@@ -1,5 +1,5 @@
 {
-    "name": "cadnative/slox_example_plugin",
+    "name": "cadnative/slox-example-plugin",
     "description": "Shopware 6 Plugin Template",
     "version": "0.0.1",
     "type": "shopware-platform-plugin",
@@ -10,18 +10,10 @@
         "homepage": "https://github.com/akshaynikhare",
         "role": "Developer"
     }],
-    "autoload": {
-        "psr-4": {
-            "slox_example_plugin\\": "src/"
-        }
-    },
+
     "require": {
         "shopware/core": "~6.4",
         "php": "^7.4 || ^8.0"
-    },
-    "conflict": {
-        "shopware/storefront": "<6,>=7",
-        "shopware/administration": "<6,>=7"
     },
     "prefer-stable": true,
     "extra": {
@@ -30,6 +22,16 @@
         "label": {
             "de-DE": "Shopware 6 Plugin Template",
             "en-GB": "Shopware 6 Plugin Template"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "slox_example_plugin\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "slox_example_plugin\\Tests\\": "tests/"
         }
     }
 }

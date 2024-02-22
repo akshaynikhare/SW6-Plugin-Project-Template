@@ -8,42 +8,28 @@ services:
 
       container_name: slox_test_1
       ports:
-         - "80:80"
-         - "8080:8080"
-         - "3306:3306"
-         - "22:22"
-         - "8888:8888"
-         - "9999:9999"
-         - "9998:9998"
+         - "22:22"     # ssh
+         - "80:80"     # apache2
+         - "443:443"   # apache2 https
+         - "8888:8888" # watch admin
+         - "9998:9998" # watch storefront proxy
+         - "9999:9999" # watch storefront
+         - "3306:3306" # mysql port
       volumes:
-         - "db_volume:/var/lib/mysql"
-         - "shop_volume:/var/www/html"
          - ./slox_example_plugin:/var/www/html/custom/plugins/slox_example_plugin
          - ./pimpMyLog/logLinker.json:/var/www/pimpmylog/config.user.d/logLinker.json
-         - ./slox_example_plugin/bin/buildadmin.sh:/var/www/html/bin/buildadmin.sh
+
          
       networks:
          - web
       environment:
-         # default = 0, recommended to be OFF for frontend devs
          - XDEBUG_ENABLED=1
-         # default = latest PHP, optional = specific version
-         - PHP_VERSION=8.0
-
-volumes:
-  db_volume:
-    driver: local
-  shop_volume:
-    driver: local
+         - DISABLE_ADMIN_COMPILATION_TYPECHECK=1
+         - SHOPWARE_ADMIN_BUILD_ONLY_EXTENSIONS=1
+         - PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=1
+         - APP_ENV=dev
+         - NODE_OPTIONS=--openssl-legacy-provider
 
 networks:
   web:
     external: false
-
-
-    #Docker Clean up
-    # docker image prune -a
-    # docker system prune
-    # docker container prune
-    # docker volume prune
-    # docker network prune
