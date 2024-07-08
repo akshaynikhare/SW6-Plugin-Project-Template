@@ -126,3 +126,8 @@ Please help with code, love, shares, feedback and bug reporting.
 ## License
 The MIT License (MIT). Please see [License File](LICENSE) for more information.
 
+
+## Support 
+ 
+- For additional support, please email us at [info@cadnative.com](mailto:info@cadnative.com).
+- or send us a contact requst at our website [cadnative.com](https://cadnative.com/contact/)
